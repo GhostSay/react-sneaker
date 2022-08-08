@@ -21,7 +21,7 @@ function App() {
 
         </header>
         <div className="content">
-          <h1>Все кроссовки</h1>
+          <h1>Все кроссовки!</h1>
           
         </div>
     </div>
