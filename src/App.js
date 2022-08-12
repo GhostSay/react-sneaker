@@ -21,8 +21,67 @@ function App() {
 
         </header>
         <div className="content">
-          <h1>Все кроссoвки!</h1>
-         
+          <h1 className="allSneakers">Все кроссoвки!</h1>
+
+          <div className="sneakers">
+
+           <div className="card">
+             <img width={133} height={112} src="/img/1.png" />
+             <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+             <div className="cardBottom">
+               <div className="narx">
+                 <span>Цена:</span>
+                 <b>12 999 руб.</b>
+               </div>
+               <button className="button">
+                 <img width={11} height={11} src="/img/plus.png" />
+               </button>
+             </div>
+           </div>
+           <div className="card">
+             <img width={133} height={112} src="/img/1.png" />
+             <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+             <div className="cardBottom">
+               <div className="narx">
+                 <span>Цена:</span>
+                 <b>12 999 руб.</b>
+               </div>
+               <button className="button">
+                 <img width={11} height={11} src="/img/plus.png" />
+               </button>
+             </div>
+
+           </div>
+           <div className="card">
+             <img width={133} height={112} src="/img/1.png" />
+             <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+             <div className="cardBottom">
+               <div className="narx">
+                 <span>Цена:</span>
+                 <b>12 999 руб.</b>
+               </div>
+               <button className="button">
+                 <img width={11} height={11} src="/img/plus.png" />
+               </button>
+             </div>
+
+           </div>
+           <div className="card">
+             <img width={133} height={112} src="/img/1.png" />
+             <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+             <div className="cardBottom">
+               <div className="narx">
+                 <span>Цена:</span>
+                 <b>12 999 руб.</b>
+               </div>
+               <button className="button">
+                 <img width={11} height={11} src="/img/plus.png" />
+               </button>
+             </div>
+
+           </div>
+          </div>
+          
         </div>
     </div>
   );
