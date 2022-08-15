@@ -3,7 +3,7 @@ function App() {
     <div className="wrapper">
       <div className="overlay">
         <div className="drawer">
-          <h2>Корзина</h2>
+          <h2>Корзина<img src="/img/x.png"/></h2> 
           <div className="item">
 
 
@@ -11,6 +11,7 @@ function App() {
               <img src="/img/1.png" className="cartItemsSneakers"/>
                 <div className="cartItemsDetails">
                   <p >Мужские Кроссовки Nike Blazer Mid Suede</p>
+                  
                   <b>12 999 руб.</b>
                 </div>
               <img src="/img/x.png" alt="Remove" className='cartItemsRemove'/>
@@ -64,25 +65,16 @@ function App() {
 
         </header>
         <div className="content">
-          <h1 className="allSneakers">Все кроссoвки!</h1>
-
-          <div className="sneakers">
-           <div className="card">
-            <div className="favorite">
-                <img src='/img/unlike.png'/>
+          <div className="search-div">
+            <h1 className="allSneakers">Все кроссoвки!</h1>
+          
+            <div className="search">
+              <img src="/img/search.png"/>
+              <input placeholder="Поиск..."/>
             </div>
-             <img width={133} height={112} src="/img/1.png" />
-             <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
-             <div className="cardBottom">
-               <div className="narx">
-                 <span>Цена:</span>
-                 <b>12 999 руб.</b>
-               </div>
-               <button className="button">
-                 <img width={11} height={11} src="/img/plus.png" />
-               </button>
-             </div>
-           </div>
+          </div>
+          <div className="sneakers">
+           
            <div className="card">
              <img width={133} height={112} src="/img/1.png" />
              <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
@@ -125,6 +117,7 @@ function App() {
              </div>
 
            </div>
+           
           </div>
           
         </div>

@@ -5,6 +5,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    background: #E7F6FF;
+
 }
 
 .wrapper
@@ -13,6 +15,7 @@ body {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   max-width: 1080px;
+  overflow: hidden;
   margin: 50px auto;
 }
 
@@ -46,6 +49,11 @@ header h3, p
   margin: 0;
   font-family: 'Inter', sans-serif;
 }
+
+
+
+
+
 
 .headerInfo h3{
   text-transform: uppercase;
@@ -143,7 +151,7 @@ header img
   position: absolute;
   left: 0%;
   top: 0;
-  
+  display: none;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   width: 100%;
@@ -156,19 +164,32 @@ header img
   width: 420px;
   height: 100%;
   right: 0;
-  padding: 30px;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
   background: #FFFFFF;
-  box-shadow: -10px 4px 24px;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.01);
+
 }
 
-
+.greenButton:disabled
+{
+  background-color: #bebebe !important;
+  cursor: default;
+}
 
 .drawer h2
 {
   margin: 0;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
   font-size: 24px;
+}
+
+.drawer h2 img
+{
+  cursor: pointer;
 }
 
 .cartItem
@@ -207,6 +228,15 @@ header img
   font-size: 13px;
 }
 
+.item
+{
+  flex: 1;
+  padding: 30px;
+  overflow: auto;
+  margin-bottom: 40px;
+  
+}
+
 .cartItemsRemove
 {
   opacity: 0.5;
@@ -242,9 +272,9 @@ header img
   top: 20px;
 }
 
-.totalCost .greenButton img:hover
+.totalCost 
 {
-  
+  padding: 30px;
 }
 
 
@@ -269,11 +299,55 @@ header img
   transition: 0.1s ease-in-out;
 }
 
-.totalCost button:hover
+.greenButton:hover
 {
-  background-color: #69b50e;
+  background: lighten(#9dd558, 5%);
 }
-.totalCost button:active
+.greenButton:active
 {
-  background:  #95e82f;
+  background:  darken(#9dd558, 5%)
+}
+
+.totalCost .greenButton:hover img
+{
+  transform: translateX(5px);
+}
+
+.totalCost .greenButton:disabled 
+{
+  animation: button-loading 0.6 ease-in-out infinite;
+}
+
+.search-div
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.search
+{
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 0 15px;
+  height: 45px;
+  width: 250px;
+}
+
+
+
+.search input 
+{
+  border: 0;
+  padding: 13px;
+  font-size: 16px;
+  width: 200px;
+}
+
+.search img
+{
+  width: 20px;
+  height: 20px;
+  margin-top: 10px ;
 }
