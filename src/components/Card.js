@@ -1,12 +1,13 @@
-function Card()
+function Card(props)
 {
+  
     return(
         <div className="card">
             <div className="favorite">
                 <img src='/img/unlike.png'/>
             </div>
             <img width={133} height={112} src="/img/1.png" />
-            <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+            <h5>{props.title}</h5>
             <div className="cardBottom">
               <div className="narx">
                 <span>Цена:</span>
@@ -17,7 +18,7 @@ function Card()
               </button>
             </div>
            </div>
-)
+);
 }
 
 export default Card
