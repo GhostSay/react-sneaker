@@ -1,18 +1,21 @@
-import Card from './components/Card.js'
+import Card from './components/Card/Card.js'
 import Header from './components/Header'
 import Drawer from './components/Drawer'
 
 const arr = [
   {
     title:'Мужские Кроссовки Nike Blazer Mid Suede', 
-    price:  12999},
+    price:  12999,
+    imageUrl: '/img/1.png'},
   {
     title:'Кроссовки Puma X Aka Boku Future Rider', 
-    price: 8999,},
+    price: 8999,
+    imageUrl: '/img/1.png'},
   {
     title:'Мужские Кроссовки Nike Air Max 270',
-    price: 8499,}
- 
+    price: 8499,
+    imageUrl: '/img/1.png'
+    }
 
 
 
@@ -42,6 +45,7 @@ function App() {
              <Card 
              title = {obj.title}             
              price = {obj.price}
+             imageUrl = {obj.imageUrl}
              />
 
           ))}
