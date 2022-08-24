@@ -1,6 +1,8 @@
+import React, { useState } from 'react'
 import Card from './components/Card/Card.js'
 import Header from './components/Header'
 import Drawer from './components/Drawer'
+
 
 const arr = [
   {
@@ -20,12 +22,14 @@ const arr = [
 
 
 ]
-console.log(arr.price);
+
 function App() {
+  const [cartOpened, setCartOpened] = React.useState(false)
+
   return (
     <div className="wrapper">
-      <Drawer />
-      <Header />
+      {cartOpened? <Drawer />: null }
+      <Header setCartOpened={() => setCartOpened(true)} />
       <div className="content">
         <div className="search-div">
           <h1 className="allSneakers">Все кроссoвки!</h1>

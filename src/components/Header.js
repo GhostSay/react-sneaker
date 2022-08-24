@@ -1,5 +1,6 @@
-function Header()
+function Header(props)
     {
+   
         return(
             <header>
                 <div className="headerLeft">
@@ -13,11 +14,11 @@ function Header()
                 </div>
                 <ul className="headerRight">
                   <li>
-                    <img width={18} height={18} src="/img/Group.png"/>
+                    <img width={18} height={18} src="/img/Group.png" />
                     <span>1205 руб.</span>  
                   </li>
                   <li>
-                  <img width={20} height={20} src="/img/Union.png"/>
+                    <img width={20} height={20} src="/img/Union.png"/>
                   </li>
                 </ul>
     

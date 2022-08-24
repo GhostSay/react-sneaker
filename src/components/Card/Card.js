@@ -1,16 +1,30 @@
 import styles from './card.module.css'
+import React from 'react'
 
 function Card(props)
 {
-  const onClickButton = () =>{
-    alert(props.price)
+  const [isAdded, setIsAdded] = React.useState(true)
+  const [isLiked, setIsLiked] = React.useState(true)
+
+  const onClickPlus = () =>
+  {
+    setIsAdded(!isAdded)
   }
 
+  const onClickHeart = () =>
+  {
+    setIsLiked(!isLiked)
+  }
+
+  React.useEffect(()=>
+  {
+    console.log("ozgardi")
+  },[isAdded])
 
     return(
         <div className={styles.card}>
             <div className={styles.favorite}>
-                <img src='/img/unlike.png'/>
+                <img onClick={onClickHeart} src={isLiked ? 'img/unlike.png' : 'img/cardLiked.png'}/>
             </div>
             <img width={133} height={112} src={props.imageUrl} />
             <h5>{props.title}</h5>
@@ -21,9 +35,8 @@ function Card(props)
               </div>
               <div className={styles.buttonMother}>
 
-              <button className={styles.button} onClick={onClickButton}>
-                <img className={styles.plus} width={11} height={11} src={'img/plus.png '} />
-              </button>
+                <img className={styles.plus} onClick={onClickPlus} width={11} height={11} src={isAdded ? 'img/notCheckedPlus.png' : 'img/checkedPlus.png'} />
+             
               </div>
             </div>
            </div>
