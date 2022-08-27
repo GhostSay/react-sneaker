@@ -4,32 +4,21 @@ import Header from './components/Header'
 import Drawer from './components/Drawer'
 
 
-const arr = [
-  {
-    title:'Мужские Кроссовки Nike Blazer Mid Suede', 
-    price:  12999,
-    imageUrl: '/img/1.png'},
-  {
-    title:'Кроссовки Puma X Aka Boku Future Rider', 
-    price: 8999,
-    imageUrl: '/img/1.png'},
-  {
-    title:'Мужские Кроссовки Nike Air Max 270',
-    price: 8499,
-    imageUrl: '/img/1.png'
-    }
-
-
-
-]
 
 function App() {
+  const [items, setItems] = React.useState([])
   const [cartOpened, setCartOpened] = React.useState(false)
+  
+  fetch('https://63091931722029d9ddde846f.mockapi.io/items').then((res) =>
+    {return res.json() })
+    .then((json) =>{
+      setItems(json);})
+
 
   return (
     <div className="wrapper">
-      {cartOpened? <Drawer />: null }
-      <Header setCartOpened={() => setCartOpened(true)} />
+      {cartOpened? <Drawer onClose={() => setCartOpened(false)} />: null }
+      <Header onClickCart={() => setCartOpened(true)}/>
       <div className="content">
         <div className="search-div">
           <h1 className="allSneakers">Все кроссoвки!</h1>
@@ -42,10 +31,7 @@ function App() {
         <div className="sneakers">
         
         
-      
-        
-
-          {arr.map ((obj) =>(
+          {items.map ((obj) =>(
              <Card 
              title = {obj.title}             
              price = {obj.price}

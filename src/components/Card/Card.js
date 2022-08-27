@@ -16,10 +16,6 @@ function Card(props)
     setIsLiked(!isLiked)
   }
 
-  React.useEffect(()=>
-  {
-    console.log("ozgardi")
-  },[isAdded])
 
     return(
         <div className={styles.card}>
