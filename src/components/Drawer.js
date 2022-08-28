@@ -1,37 +1,21 @@
-function Drawer(props)
+function Drawer({onClose, items = []})
 {
     return(
         <div className="overlay">
             <div className="drawer">
-              <h2>Корзина<img src="/img/x.png" onClick={props.onClose}/></h2> 
+              <h2>Корзина<img src="/img/x.png" onClick={onClose}/></h2> 
               <div className="item">
-        
-        
-                <div className="cartItem">
-                  <img src="/img/1.png" className="cartItemsSneakers"/>
-                    <div className="cartItemsDetails">
-                      <p >Мужские Кроссовки Nike Blazer Mid Suede</p>
-                      
-                      <b>12 999 руб.</b>
-                    </div>
-                  <img src="/img/x.png" alt="Remove" className='cartItemsRemove'/>
-                </div>
-                <div className="cartItem">
-                  <img src="/img/1.png" className="cartItemsSneakers"/>
-                    <div className="cartItemsDetails">
-                      <p >Мужские Кроссовки Nike Blazer Mid Suede</p>
-                      <b>12 999 руб.</b>
-                    </div>
-                  <img src="/img/x.png" alt="Remove" className='cartItemsRemove'/>
-                </div>
-                <div className="cartItem">
-                  <img src="/img/1.png" className="cartItemsSneakers"/>
-                    <div className="cartItemsDetails">
-                      <p >Мужские Кроссовки Nike Blazer Mid Suede</p>
-                      <b>12 999 руб.</b>
-                    </div>
-                  <img src="/img/x.png" alt="Remove" className='cartItemsRemove'/>
-                </div>
+                {items.map((item)=>
+                {<div className="cartItem">
+                <img src="/img/1.png" className="cartItemsSneakers"/>
+                  <div className="cartItemsDetails">
+                    <p >Мужские Кроссовки Nike Blazer Mid Suede</p>
+                    
+                    <b>12 999 руб.</b>
+                  </div>
+                <img src="/img/x.png" alt="Remove" className='cartItemsRemove'/>
+              </div>
+            })}
               </div>
               <div className="totalCost">
                 <ul>

@@ -7,14 +7,22 @@ import Drawer from './components/Drawer'
 
 function App() {
   const [items, setItems] = React.useState([])
+  const [cartItems, setCartItems] = React.useState([])
   const [cartOpened, setCartOpened] = React.useState(false)
   
-  fetch('https://63091931722029d9ddde846f.mockapi.io/items').then((res) =>
+  React.useEffect(() =>{
+    fetch('https://63091931722029d9ddde846f.mockapi.io/items').then((res) =>
     {return res.json() })
     .then((json) =>{
       setItems(json);})
+  },[])
 
-
+  const onAddToCart = (obj) =>
+  {
+    setCartItems([...cartItems, obj]);
+  } 
+  console.log(cartItems);
+  
   return (
     <div className="wrapper">
       {cartOpened? <Drawer onClose={() => setCartOpened(false)} />: null }
@@ -31,11 +39,13 @@ function App() {
         <div className="sneakers">
         
         
-          {items.map ((obj) =>(
+          {items.map ((item) =>(
              <Card 
-             title = {obj.title}             
-             price = {obj.price}
-             imageUrl = {obj.imageUrl}
+             title = {item.title}             
+             price = {item.price}
+             imageUrl = {item.imageUrl}
+             onFavorite = {()=> console.log("favorited")}
+             onPlus = {(obj) => onAddToCart(obj)}
              />
 
           ))}
