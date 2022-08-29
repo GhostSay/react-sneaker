@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import Card from './components/Card/Card.js'
 import Header from './components/Header'
 import Drawer from './components/Drawer'
@@ -11,15 +12,21 @@ function App() {
   const [searchValue, setSearchValue] = React.useState("")
   const [cartOpened, setCartOpened] = React.useState(false)
   
-  React.useEffect(() =>{
-    fetch('https://63091931722029d9ddde846f.mockapi.io/items').then((res) =>
-    {return res.json() })
-    .then((json) =>{
-      setItems(json);})
+  React.useEffect((obj) =>{
+      axios.get('https://63091931722029d9ddde846f.mockapi.io/items').then(res =>
+      {
+        setItems(res.data);
+      });
+
+      axios.get('https://63091931722029d9ddde846f.mockapi.io/cart').then(res =>
+      {
+        setCartItems(res.data);
+      })
   },[])
 
   const onAddToCart = (obj) =>
   {
+    axios.post('https://63091931722029d9ddde846f.mockapi.io/cart', obj);
     setCartItems([...cartItems, obj]);
   } 
   console.log(cartItems);
