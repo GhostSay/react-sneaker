@@ -24,10 +24,11 @@ function App() {
       })
   },[])
 
-  const onRemoveItem = (obj) =>
+  const onRemoveItem = (id) =>
   {
-    // axios.delete('https://63091931722029d9ddde846f.mockapi.io/cart');
-    setCartItems( (prev) =>[prev.filter(item => item.obj !== obj)]);
+    axios.delete(`https://63091931722029d9ddde846f.mockapi.io/cart${id}`);
+    setCartItems((prev) =>prev.filter(item => item.id !== id));
+    console.log("ishladi")
   }
 
   const onAddToCart = (obj) =>
