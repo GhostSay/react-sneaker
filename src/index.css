@@ -32,8 +32,9 @@ header
 }
 header li
 {
- list-style-type: none; 
- margin-right: 30px;
+  list-style-type: none; 
+  margin-right: 30px
+ 
 }
 header ul
 {
@@ -56,6 +57,13 @@ header h3, p
 .headerRight li 
 {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+header :nth-child(2)
+{
+  margin-right: 10px;
 }
 
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {Route} from 'react-router-dom'
 import axios from 'axios'
 import Card from './components/Card/Card.js'
 import Header from './components/Header'
@@ -9,6 +10,7 @@ import Drawer from './components/Drawer'
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
+  const [favorites, setFavorites] = React.useState([])
   const [searchValue, setSearchValue] = React.useState("")
   const [cartOpened, setCartOpened] = React.useState(false)
   
@@ -26,9 +28,8 @@ function App() {
 
   const onRemoveItem = (id) =>
   {
-    axios.delete(`https://63091931722029d9ddde846f.mockapi.io/cart${id}`);
+    axios.delete(`https://63091931722029d9ddde846f.mockapi.io/cart/${id}`);
     setCartItems((prev) =>prev.filter(item => item.id !== id));
-    console.log("ishladi")
   }
 
   const onAddToCart = (obj) =>
@@ -36,13 +37,18 @@ function App() {
     axios.post('https://63091931722029d9ddde846f.mockapi.io/cart', obj);
     setCartItems((prev) =>[...prev, obj]);
   } 
-  console.log(cartItems);
   
   const onChangeSearchInput = (event) =>
   {
     console.log();
     setSearchValue(event.target.value)
   }
+
+  const onAddToFavorite = (obj) =>
+  {
+    axios.post('https://63091931722029d9ddde846f.mockapi.io/favorites', obj);
+    setFavorites((prev) =>[...prev, obj]);
+  } 
 
   return (
     <div className="wrapper">
@@ -66,7 +72,7 @@ function App() {
              title = {item.title}             
              price = {item.price}
              imageUrl = {item.imageUrl}
-             onFavorite = {()=> console.log("favorited")}
+             onFavorite = {(obj) => onAddToFavorite(obj)}
              onPlus = {(obj) => onAddToCart(obj)}
              />
 

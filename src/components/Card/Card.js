@@ -5,6 +5,7 @@ function Card({ title, imageUrl, price, onFavorite, onPlus })
 {
   const [isAdded, setIsAdded] = React.useState(true)
   const [isLiked, setIsLiked] = React.useState(true)
+  const [isFavorite, setIsFavorite] = React.useState(true)
 
   const onClickPlus = () =>
   {
@@ -15,6 +16,7 @@ function Card({ title, imageUrl, price, onFavorite, onPlus })
   
   const onClickHeart = () =>
   {
+    onFavorite({title, imageUrl, price})
     setIsLiked(!isLiked)
   }
 
