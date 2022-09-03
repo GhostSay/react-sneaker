@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import axios from 'axios'
 import Card from './components/Card/Card.js'
 import Header from './components/Header'
@@ -54,6 +54,9 @@ function App() {
     <div className="wrapper">
       {cartOpened? <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />: null }
       <Header onClickCart={() => setCartOpened(true)}/>
+
+      <Route path='/test'>this is the test information</Route>
+
       <div className="content">
         <div className="search-div">
           <h1 className="allSneakers">{searchValue ? `Поиск по запросу: "${searchValue}"` : 'Все кроссовки!'}</h1>
