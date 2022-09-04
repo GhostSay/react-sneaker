@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter as Router} from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -9,7 +15,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <Route path='/sa' element={<App />}/>
+      <Route path='/favorite' element={<Link/>} />
     </Router>
   </React.StrictMode>
 );
