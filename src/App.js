@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
-import { Route } from 'react-router-dom'
 import axios from 'axios'
 import Card from './components/Card/Card.js'
 import Header from './components/Header'
 import Drawer from './components/Drawer'
-
+import Home from './pages/Home'
+import {
+  BrowserRouter,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
 
 
 function App() {
@@ -55,7 +60,7 @@ function App() {
       {cartOpened? <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />: null }
       <Header onClickCart={() => setCartOpened(true)}/>
 
-      <Route path='/test'>this is the test information</Route>
+      
 
       <div className="content">
         <div className="search-div">
