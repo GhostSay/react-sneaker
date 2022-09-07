@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Header from './components/Header'
 import ReactDOM from 'react-dom/client';
 import {
   BrowserRouter,
@@ -16,9 +17,9 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
+
       <Routes>
         <Route path='/' element={<App />} />
-        {/* <Route path='/eh' element={<Link/>}></Route> */}
         <Route path='/home' element={<Home />} />
       </Routes>
     </BrowserRouter>

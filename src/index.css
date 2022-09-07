@@ -28,6 +28,7 @@ header
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border: 1px solid #EAEAEA;
+  background-color: #fff;
   justify-content: space-between;
 }
 header li
@@ -337,4 +338,11 @@ header img
   width: 20px;
   height: 20px;
   margin-top: 10px ;
+}
+
+
+.back
+{
+  color: black;
+  text-decoration: none;
 }
