@@ -1,10 +1,32 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+import styles from './homeStyles.css'
 import Card from '../components/Card/Card.js'
 import Header from '../components/Header'
 import {Link} from 'react-router-dom'
 
-function Homee({items, searchValue, onRemove, onChangeSearchInput }){
+function Homee(setCartItems){
+
+  const [getFavorites, setGetFavorites] = React.useState([])
+
+  React.useEffect((obj) =>{
+    axios.get('https://63091931722029d9ddde846f.mockapi.io/favorites').then(res =>
+    {
+      setGetFavorites(res.data);
+    });
+    },[])
+
+  
+    const onRemoveItem = (id) =>
+  {
+    axios.delete(`https://63091931722029d9ddde846f.mockapi.io/favorites/${id}`);
+    setCartItems((prev) =>prev.filter(item => item.id !== id));
+  }
+
+
     return(
+
+        
         <div className='favorites'>
              <header>
             <div className="headerLeft">
@@ -16,10 +38,6 @@ function Homee({items, searchValue, onRemove, onChangeSearchInput }){
             </div>
             <ul className="headerRight">
               <li>
-                <img width={18} height={18} src="/img/Group.png" />
-                <span>1205 руб.</span>  
-              </li>
-              <li>
                   <Link to='/'>
                     <p className='back'>Go to back</p>
                   </Link>
@@ -27,31 +45,23 @@ function Homee({items, searchValue, onRemove, onChangeSearchInput }){
             </ul>
 
         </header>
-        <div className="content">
-        <div className="search-div">   
-          <div className="search">
-            <img src="/img/search.png"/>
-            <input onInput={onChangeSearchInput} value={searchValue} placeholder="Поиск..." maxLength={40}/>
-          </div>
-        </div>
-        <div className="sneakers"> 
-          {items.map ((item) =>(
-             <div className="cartItem">
-             <img src={item.imageUrl} className="cartItemsSneakers"/>
-               <div className="cartItemsDetails">
+        <div className="body">
+          {getFavorites.length > 0 ?
+          <div className="sneakers"> 
+            {getFavorites.map ((item) =>(
+              <div className="cartItem-fav">
+                <img src={item.imageUrl} className="cartItemsSneakers"/>
+                <div className="cartItemsDetails">
                  <p>{item.title}</p>
            
                  <b>{item.price} руб.</b>
-               </div>
-             <img src="/img/x.png" onClick={()=> onRemove(item.id)} alt="Remove"  className='cartItemsRemove'/>
-           </div>
+                 <img src="/img/x.png" onClick={()=> onRemoveItem(item.id)} alt="Remove"  className='cartItemsRemove'/>
+
+                </div>
+              </div>
 
           ))}
-
-          
-         
-         
-        </div>
+        </div> : <p className="negative-text">Пусто...</p>}
         
       </div>
         </div>
