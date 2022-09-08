@@ -3,7 +3,7 @@ import Card from '../components/Card/Card.js'
 import Header from '../components/Header'
 import {Link} from 'react-router-dom'
 
-function Homee({items, searchValue, onAddToCart, onAddToFavorite, onChangeSearchInput}){
+function Homee({items, searchValue, onRemove, onChangeSearchInput }){
     return(
         <div className='favorites'>
              <header>
@@ -34,18 +34,17 @@ function Homee({items, searchValue, onAddToCart, onAddToFavorite, onChangeSearch
             <input onInput={onChangeSearchInput} value={searchValue} placeholder="Поиск..." maxLength={40}/>
           </div>
         </div>
-        <div className="sneakers">
-        
-        
-          {items.map ((item, index) =>(
-             <Card 
-             key={index}
-             title = {item.title}             
-             price = {item.price}
-             imageUrl = {item.imageUrl}
-             onFavorite = {(obj) => onAddToFavorite(obj)}
-             onPlus = {(obj) => onAddToCart(obj)}
-             />
+        <div className="sneakers"> 
+          {items.map ((item) =>(
+             <div className="cartItem">
+             <img src={item.imageUrl} className="cartItemsSneakers"/>
+               <div className="cartItemsDetails">
+                 <p>{item.title}</p>
+           
+                 <b>{item.price} руб.</b>
+               </div>
+             <img src="/img/x.png" onClick={()=> onRemove(item.id)} alt="Remove"  className='cartItemsRemove'/>
+           </div>
 
           ))}
 
