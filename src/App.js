@@ -18,9 +18,9 @@ function App() {
   const [favorites, setFavorites] = React.useState([])
   const [searchValue, setSearchValue] = React.useState("")
   const [cartOpened, setCartOpened] = React.useState(false)
-  
+  const [page, setPage] = useState(1)
   React.useEffect((obj) =>{
-      axios.get('https://63091931722029d9ddde846f.mockapi.io/items').then(res =>
+      axios.get(`https://63091931722029d9ddde846f.mockapi.io/items?search=Nike&page=${page}&limit=2`).then(res =>
       {
         setItems(res.data);
       });
@@ -29,7 +29,7 @@ function App() {
       {
         setCartItems(res.data);
       })
-  },[])
+  },[page])
 
   const onRemoveItem = (id) =>
   {
@@ -54,7 +54,7 @@ function App() {
     axios.post('https://63091931722029d9ddde846f.mockapi.io/favorites', obj);
     setFavorites((prev) =>[...prev, obj]);
   } 
-
+  console.log(page);
   return (
     <div className="wrapper">
       {cartOpened? <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />: null }
@@ -83,14 +83,13 @@ function App() {
              onFavorite = {(obj) => onAddToFavorite(obj)}
              onPlus = {(obj) => onAddToCart(obj)}
              />
-
           ))}
 
           
          
          
         </div>
-        
+        <input onChange={(el)=> setPage(el.target.value)}/>
       </div>
     </div>
   );

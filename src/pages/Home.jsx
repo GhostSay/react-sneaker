@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import styles from './homeStyles.css'
-import Card from '../components/Card/Card.js'
-import Header from '../components/Header'
 import {Link} from 'react-router-dom'
 
-function Homee(setCartItems){
+function Homee(){
 
   const [getFavorites, setGetFavorites] = React.useState([])
 
@@ -20,7 +18,8 @@ function Homee(setCartItems){
     const onRemoveItem = (id) =>
   {
     axios.delete(`https://63091931722029d9ddde846f.mockapi.io/favorites/${id}`);
-    setCartItems((prev) =>prev.filter(item => item.id !== id));
+    setGetFavorites((prev) =>prev.filter(item => item.id !== id));
+
   }
 
 
@@ -47,7 +46,7 @@ function Homee(setCartItems){
         </header>
         <div className="body">
           {getFavorites.length > 0 ?
-          <div className="sneakers"> 
+          <div className="sneakerss"> 
             {getFavorites.map ((item) =>(
               <div className="cartItem-fav">
                 <img src={item.imageUrl} className="cartItemsSneakers"/>
